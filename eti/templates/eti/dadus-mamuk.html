@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Seidauk Iha!
+{% endblock %}
+
+{% block content %}
+  <!-- jumbotrong -->
+  <div class="my-jumbo p-5 mb-4 bg-body-tertiary">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 text-white fw-bold">Dadus Mamuk</h1>
+    </div>
+  </div>
+  <!-- end of jumbotrong -->
+
+  <!-- content -->
+  <div class="perfil-container container shadow rounded my-3 p-3">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="display-1" id="element"></h1>
+      </div>
+    </div>
+
+  </div>
+  <!-- end of content -->
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <!-- Setup and start animation! -->
+    <script>
+    var typed = new Typed('#element', {
+        strings: ['Deskulpa..!', 'Ami nia dadus seidauk kompletu.'],
+        typeSpeed: 150,
+        loop: true
+    });
+    </script>
+    </body>
+{% endblock %}

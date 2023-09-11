@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block title %} {{ notisia.titulu }} {% endblock %}
+{% block content %}
+<!-- jumbotrong -->
+<div class="my-jumbo p-5 mb-4 bg-body-tertiary">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 text-white fw-bold">Notisia Actual</h1>
+  </div>
+</div>
+<!-- end of jumbotrong -->
+
+<!-- content -->
+<div class="perfil-container container shadow rounded my-3 p-3" id="content">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>{{ notisia.titulu }}</h1>
+
+      <p>
+        <i class="bi bi-pencil-fill"></i> - husi
+        <b>{{ notisia.autor.naran }}</b>
+      </p>
+      <p>
+        <i class="bi bi-calendar2-week-fill"></i> - {{ notisia.data_publikasaun }}
+      </p>
+
+      <img
+        src="{{ notisia.img.url }}"
+        alt="{{ notisia.img.url }}"
+        class="img-fluid rounded"
+      />
+      <p class="lh-lg">{{ notisia.content|linebreaksbr }}</p>
+
+      <h5>Categoria</h5>
+      <div class="flex">
+        {% for categoria in notisia.categoria.all %}
+        <span class="badge text-bg-secondary">{{ categoria.naran }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="my-md-5"></div>
+
+      <hr>
+      
+      <h4 class="my-md-3">Notisia relevante</h4>
+
+      <div class="d-flex">
+        {% for notisia_r in notisia_relevante %}
+
+          {% if notisia_r.pk != notisia.pk %}
+            <div class="card mx-md-3 shadow d-flex flex-column align-items-start justify-content-between" style="width: 200px">
+              <img src="{{ notisia_r.img.url }}" alt="" class="img-fluid rounded">
+              <h4 class="card-title px-md-3">{{ notisia_r.titulu|truncatewords:5 }}</h4>
+              <br>
+              <a href="{% url 'eti:notisia-detail' notisia_r.pk %}"
+                class="my-link text-bold link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-dark">Lee
+                liu tan &rightarrow;</a>
+            </div>
+          {% endif %}
+          
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of content -->
+{% endblock %}

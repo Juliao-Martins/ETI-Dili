@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Departamentu {{ departamentu.titulu }}
+{% endblock %}
+
+{% block content %}
+    <!-- jumbotrong -->
+    <div class="my-jumbo p-5 mb-4 bg-body-tertiary">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 text-white fw-bold">Departamento</h1>
+          <h3 class="display-5 text-white">ETI-Dili oferese departamento 9 (sia)</h3>
+        </div>
+      </div>
+      <!-- end of jumbotrong -->
+  
+      <!-- content of departament -->
+      <div class="container-lg" id="content">
+        <div class="row" aria-hidden="true">
+          <div class="placeholder-glow col-sm-8 shadow-sm p-3 rounded">
+            <h3 class="placeholder">{{ departamento.naran }}</h3>
+            <img
+              src="{{ departamento.img.url }}"
+              alt="" class="clips placeholder rounded w-100 my-3">
+            <p class="placeholder lh-lg">{{ departamento.deskrisaun|linebreaksbr }}</p>
+  
+            <h4 class="placeholder mt-5 mb-3"><i class="bi bi-box-fill"></i> Atividade prinsipal ne’ebe dezenpeña iha tékniku ne’e mak hanesan</h4>
+            <br>
+  
+            <ul class="placeholder list-group list-group-flush">
+                {% for atividade in departamento.atividade_prinsipal.all %}
+                    <li class="placeholder list-group-item"><i class="bi bi-caret-right-fill"></i> {{ atividade.programa|slice:"6:" }}</li>
+                {% endfor %}
+            </ul>
+            <br>
+  
+            <h4 class="placeholder mt-4"><i class="bi bi-hourglass"></i> Programa socio cultural</h4>
+            <br>
+  
+            <ul class="placeholder custom-list">
+              {% for socio in departamento.programa_socio.all %}
+              <li class="dash">{{ socio.programa }}</li>
+              {% endfor %}
+            </ul>
+            <br>
+  
+            <h4 class="placeholder"><i class="bi bi-journal-bookmark"></i> Programa Cientifiku</h4>
+            <br>
+            <ul class="placeholder custom-list">
+                {% for cientifico in departamento.programa_cientifico.all %}
+                    <li class="dash">{{ cientifico.programa }}</li>
+                {% endfor %}
+            </ul>
+            <br>
+  
+            <h4 class="placeholder"><i class="bi bi-tools"></i> Programa Produtivo</h4>
+            <br>
+            <ul class="placeholder custom-list">
+                {% for produtivo in departamento.programa_produtivo.all %}
+                    <li class="dash">{{ produtivo.programa|slice:"6:" }}</li>
+                {% endfor %}
+            </ul>
+          </div>
+          <!-- list of departament -->
+          <div class="col-sm-4">
+            <div class="list-group">
+              <button type="button" class="list-group-item list-group-item-action text-bold bg-custom">
+                Departamentu seluk
+              </button>
+              {% for dep in departamentus %}
+                {% if dep.pk != departamento.pk %}
+                  <a href="{% url 'eti:departamento' dep.pk %}" class="list-group-item list-group-item-action"><i class="bi bi-link-45deg"></i> {{ dep.naran }}</button>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of content of departament -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const placeholders = document.querySelectorAll('.placeholder'),
+        placeholderGlow = document.querySelector('.placeholder-glow');
+
+
+    function removePlaceholder() {
+    if (placeholderGlow && placeholderGlow) {
+        placeholderGlow.classList.remove('placeholder-glow');
+        placeholders.forEach(el => el.classList.remove('placeholder'));
+    }
+    }
+
+    setTimeout(removePlaceholder, 750);
+
+</script>
+{% endblock %}

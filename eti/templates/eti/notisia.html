@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Notisia
+{% endblock %}
+
+{% block content %}
+<!-- jumbotrong -->
+<div class="my-jumbo p-5 mb-4 bg-body-tertiary">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 text-white fw-bold">Notisia Actual ETI-Dili</h1>
+  </div>
+</div>
+<!-- end of jumbotrong -->
+
+<!-- content -->
+<div class="container shadow rounded my-3 p-3" id="content">
+  <div class="row justify-content-center px-5 my-3">
+    <div class="col-sm-8">
+      <h3>Lista Notisia</h3>
+    </div>
+    <div class="col-sm-4">
+      <form action="">
+        <input type="search" name="" id="news-search" class="form-control" placeholder="Buka notisia" />
+      </form>
+    </div>
+  </div>
+  <div class="news-container row justify-content-center">
+    <!-- hetan notisia husi http://127.0.0.1:8000/api/news/ sei mosu iha nee! -->
+  </div>
+  <div class="row">
+    <nav aria-label="Page navigation example">
+      <ul class="mt-5 pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- end of content -->
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'eti/js/notisia.js' %}"></script>
+{% endblock %}

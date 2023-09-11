@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Perfil
+{% endblock %}
+
+{% block content %}
+<!-- jumbotrong -->
+<div class="my-jumbo p-5 mb-4 bg-body-tertiary">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 text-white fw-bold">Perfil ETI-Dili</h1>
+  </div>
+</div>
+<!-- end of jumbotrong -->
+
+<!-- button -->
+<div class="container border p-3 rounded">
+  <div class="row mb-2 justify-content-between">
+    <div class="col-sm-9">Excenlicia E Preferencia</div>
+    <div class="col-sm-3 py-2 rounded bg-dark text-white info-box text-center">
+      Vizaun, Misaun no Objetivu
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-sm-3 text-end">
+      <a href="{% url 'eti:perfil' %}"
+        class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-primary p-0 text-primary eti-btn">Historia</a>
+    </div>
+    <div class="col-sm-3 text-end">
+      <a href="javascript:void(0)"
+        class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-primary p-0 text-primary eti-btn">Estrutura
+        ETI</a>
+    </div>
+  </div>
+</div>
+<!-- end of button -->
+
+<!-- content -->
+<div class="perfil-container container shadow rounded my-3 p-3 overflow-hidden">
+
+  <div class="row left">
+    <div class="col-sm-12">
+      <h3>Vizaun</h3>
+    </div>
+  </div>
+  <div class="row left">
+    <div class="col-sm-12">
+      <img src="{% static 'eti/img/vision.png' %}" alt="" class="float-md-start me-md-3">
+      <span class="display-2">{{ perfil.vizaun|slice:"0:1"}}</span>{{ perfil.vizaun|slice:"1:" }}
+    </div>
+  </div>
+
+  <div class="row mt-5 right">
+    <div class="col-sm-12 text-end">
+      <h3>Misaun</h3>
+    </div>
+  </div>
+  <div class="row right">
+    <div class="col-sm-12">
+      <img src="{% static 'eti/img/mission.png' %}" alt="" class="float-md-end ms-md-3">
+      <span class="display-2">{{ perfil.misaun|slice:"0:1" }}</span>{{ perfil.misaun|slice:"1:" }}
+    </div>
+  </div>
+
+  <div class="row mt-5 left">
+    <div class="col-sm-12">
+      <h3>Objetivu</h3>
+    </div>
+  </div>
+  <div class="row left">
+    <div class="col-sm-12">
+      <img src="{% static 'eti/img/puzzle.png' %}" alt="" class="float-md-start me-md-3">
+      <span class="display-2">{{ perfil.objetivu|slice:"0:1" }}</span>
+      {{ perfil.objetivu|slice:"1:"|linebreaksbr }}
+    </div>
+  </div>
+
+</div>
+<!-- end of content -->
+{% endblock %}
+
+
+{% block scripts %}
+  <script src="{% static 'eti/js/animation.js' %}"></script>
+{% endblock %}
